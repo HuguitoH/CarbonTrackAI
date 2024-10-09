@@ -1,0 +1,50 @@
+Perfecto, con base en las imágenes que has subido y la idea que mencionas, te propongo un diseño conceptual para la interfaz de CarbonTrackAI que se inspiraría en esos ejemplos visuales y tendría los siguientes elementos:
+
+1. Elementos clave para la pantalla principal (Huella de Carbono):
+Componentes principales:
+Gráfico principal de la huella de carbono:
+
+Gráfico circular o tipo barra, que muestre de manera clara la cantidad de huella de carbono generada por el usuario en un día, semana o mes.
+Debajo del gráfico, podrías mostrar el total de CO₂ ahorrado o generado con un número específico (por ejemplo, "1.8 kg de CO₂ emitidos hoy").
+Secciones de actividades:
+
+Tarjetas o cajas que muestren información detallada sobre los principales factores que contribuyen a la huella de carbono:
+Transporte: Viajes en coche, uso de bicicleta, transporte público, etc.
+Comida: Cantidad de carne consumida, comida vegetariana, etc.
+Energía: Uso de electrodomésticos, energía renovable o no renovable.
+Compras: Impacto de productos adquiridos (ropa, tecnología).
+Cada sección tendría su propio icono visual (similar a las tarjetas en las imágenes que subiste) para representar claramente la actividad.
+
+Avatar animal personalizado:
+
+El usuario escoge un avatar animal al principio de la app. Podrían ser 3 opciones (puedes usar estas ideas):
+Oso Polar: Simboliza el impacto del cambio climático en los polos.
+Águila Real: Representa la biodiversidad y el impacto del cambio climático en las aves.
+Tortuga Marina: Relacionada con el impacto en los océanos y los ecosistemas marinos.
+El avatar estaría animado y cambiaría de estado (mejorado, empeorado, más feliz, triste) según el progreso del usuario en reducir su huella de carbono. Podrías mostrarlo de forma prominente, al estilo del corazón 3D en la imagen que subiste.
+Misiones diarias:
+
+En la parte inferior de la pantalla, podrías tener un área con tarjetas que representan misiones diarias, tales como:
+"Camina 3 km hoy".
+"Come una comida vegetariana".
+"Reduce el uso de energía en casa".
+Cada misión completada mejorará el estado del avatar animal y reducirá la huella de carbono diaria.
+Sugerencias de sostenibilidad:
+
+Espacio para mostrar consejos o sugerencias basadas en los hábitos del usuario. Esto puede incluir mensajes como: "Si usas la bicicleta en lugar del coche, puedes reducir tu huella en un 30%".
+2. Ideas visuales basadas en las imágenes que subiste:
+Estilo visual:
+La interfaz será muy visual, con gráficos claros y animaciones suaves.
+Utilizaríamos iconos limpios y minimalistas como en las tarjetas de las imágenes que subiste para representar transporte, comida, y energía.
+El avatar animal será animado y 3D, y su posición destacada ayudará a reforzar la relación emocional del usuario con el impacto que tiene sobre el planeta.
+3. Representación de las misiones y progreso:
+Las misiones diarias estarán en la parte inferior de la pantalla principal, similares a las tarjetas que ves en las imágenes que compartiste.
+Un gráfico de línea o barras en la pantalla de progreso permitirá que los usuarios vean cómo su huella de carbono ha disminuido con el tiempo.
+4. Pantalla de selección de avatar:
+Al principio, el usuario puede elegir su animal avatar (Oso Polar, Águila, o Tortuga), cada uno con su propia animación.
+Este avatar simboliza un ecosistema y la idea es que mejore visualmente a medida que el usuario avanza en reducir su impacto ambiental.
+Posibles herramientas para implementación:
+Lottie para las animaciones del avatar.
+react-native-chart-kit para gráficos de progreso (como los de las imágenes).
+react-navigation para navegar entre las pantallas de selección de avatar, huella de carbono, y progreso.
+Si te parece bien, puedo generar una representación visual basada en esta descripción para que puedas tener una idea más clara de cómo quedaría la interfaz con estos elementos. ¿Te gustaría que haga eso?
