@@ -1,0 +1,56 @@
+Para crear una interfaz inspirada en las imágenes que me has mostrado, enfocada en el seguimiento de la **huella de carbono** y con elementos de **gamificación**, te sugiero un diseño que incluya:
+
+### **Elementos clave del diseño para CarbonTrackAI:**
+
+1. **Pantalla principal: Huella de carbono y temas relevantes**
+   - **Gráfico circular** que representa el progreso del usuario en la reducción de su huella de carbono.
+   - Secciones que muestren las **categorías clave** que afectan la huella de carbono, tales como:
+     - **Transporte** (uso de coche, bicicleta, transporte público, etc.).
+     - **Alimentación** (comida vegana, vegetariana, o con carne).
+     - **Consumo energético** (electricidad, calefacción, uso de energía renovable).
+   - Cada categoría puede tener indicadores visuales (como barras o gráficos) que representen la cantidad de emisiones asociadas.
+
+2. **Avatar animal**
+   - El **avatar animal** es un elemento importante en la gamificación. Los usuarios escogen entre tres animales, cada uno representando una **fauna afectada por el cambio climático**. Estos animales reaccionan a las decisiones del usuario:
+     - **Oso polar**: Representa la amenaza del calentamiento global y el deshielo.
+     - **Águila**: Simboliza la biodiversidad en peligro, relacionada con deforestación y pérdida de hábitat.
+     - **Ballena**: Relacionada con la contaminación del océano y la pesca excesiva.
+   - A medida que el usuario **reduce su huella**, el avatar **evoluciona**, mostrando mejoras en su entorno (por ejemplo, el oso polar recupera su hielo, la ballena nada en aguas más limpias).
+
+3. **Misiones diarias y recompensas**
+   - En una sección, los usuarios pueden ver **misiones diarias** que les motivan a reducir su impacto:
+     - Ejemplos de misiones: "Camina 5 km en lugar de usar el coche", "Consume comida vegetariana por un día".
+   - Cada misión completada otorga **puntos de sostenibilidad** que se suman a la evolución del avatar.
+
+4. **Pantalla de progreso**
+   - Similar a lo que se ve en las imágenes que has proporcionado, se podría mostrar el progreso del usuario mediante gráficos de línea, donde cada acción positiva reduce su huella de carbono.
+   - Gráficos que representen el impacto de cada categoría de actividad: **transporte**, **alimentación**, **energía**.
+
+---
+
+### **Propuesta de Animales:**
+
+1. **Oso Polar**:
+   - Representa el cambio climático en las regiones polares. A medida que el usuario reduce su huella de carbono, el oso polar **recupera hielo** y su entorno mejora.
+   
+2. **Águila**:
+   - Relacionado con la pérdida de biodiversidad. Un águila que al principio está en un entorno seco y deforestado. Al mejorar, su hábitat se vuelve más verde y saludable.
+   
+3. **Ballena**:
+   - Simboliza los océanos. Comienza en un océano contaminado, pero a medida que el usuario reduce el consumo de plásticos o mejora su huella, el agua se vuelve más limpia y la ballena se ve más saludable.
+
+### **Pantalla inicial (Selección de avatar):**
+   - En el primer inicio de la aplicación, el usuario podrá **elegir uno de los tres animales**.
+   - La interfaz podría mostrar imágenes animadas de los tres animales con descripciones de sus roles y cómo sus hábitats se ven afectados por el cambio climático.
+
+### **Visualización:**
+
+- **Gráficos circulares y barras**: Para representar el progreso en la huella de carbono y las actividades principales que la generan (transporte, alimentación, energía).
+- **Misiones diarias**: Cada misión completada puede tener una barra o medalla que indique que el usuario ha ganado puntos.
+- **Avatar central**: El animal debe estar visible en la pantalla principal, evolucionando según las acciones positivas del usuario.
+
+### **Siguientes pasos:**
+
+Podemos diseñar esta interfaz con un aspecto moderno y limpio, usando gráficos interactivos y animaciones. El uso de colores suaves y animaciones sutiles en el avatar le dará un aspecto **amigable y accesible**.
+
+¿Te gustaría que generara un diseño visual que muestre cómo se vería esta interfaz para tu aplicación con estas ideas?
