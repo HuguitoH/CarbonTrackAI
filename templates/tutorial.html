@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tutorial</title>
+    <link rel="stylesheet" href="/static/css/tutorial.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>¡Hola, Amanda!</h1>
+            <p>Vamos a revisar tu actividad de hoy</p>
+        </header>
+
+        <div class="main-dashboard">
+            <!-- Resultados de Entrenamiento -->
+            <div class="training-results" data-tip="Esta sección muestra tus resultados de entrenamiento de hoy.">
+                <h2>Tu entrenamiento de hoy</h2>
+                <div class="calories">
+                    <p>850 kcal</p>
+                    <p>2.30 horas</p>
+                </div>
+            </div>
+
+            <!-- Días de entrenamiento -->
+            <div class="training-days" data-tip="Calendario de tus días de entrenamiento.">
+                <h2>Calendario de Entrenamiento</h2>
+                <div class="calendar"></div>
+            </div>
+
+            <!-- Pasos diarios -->
+            <div class="steps-today" data-tip="Muestra los pasos que has dado hoy.">
+                <h2>Pasos de hoy</h2>
+                <p>5,201 / 8,500 pasos</p>
+            </div>
+
+            <!-- Plan de Pérdida de Peso -->
+            <div class="weight-loss" data-tip="Muestra tu progreso en el plan de pérdida de peso.">
+                <h2>Plan de pérdida de peso</h2>
+                <p>68% completado</p>
+                <div class="weight-bar"></div>
+            </div>
+
+            <!-- Hábitos -->
+            <div class="my-habits" data-tip="Control de tus hábitos diarios y sesiones completadas.">
+                <h2>Mis Hábitos</h2>
+                <ul>
+                    <li>Estiramientos: 9/12</li>
+                    <li>Yoga: 6/10</li>
+                    <li>Masaje: 4/8</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltips que aparecen al hacer hover -->
+    <div id="tooltip" class="hidden"></div>
+
+    <script>
+        // Script para manejar los tip points
+        const elementsWithTips = document.querySelectorAll("[data-tip]");
+        const tooltip = document.getElementById("tooltip");
+
+        elementsWithTips.forEach(element => {
+            element.addEventListener("mouseover", function (event) {
+                tooltip.textContent = event.target.getAttribute("data-tip");
+                tooltip.classList.remove("hidden");
+                tooltip.style.top = `${event.pageY + 10}px`;
+                tooltip.style.left = `${event.pageX + 10}px`;
+            });
+
+            element.addEventListener("mousemove", function (event) {
+                tooltip.style.top = `${event.pageY + 10}px`;
+                tooltip.style.left = `${event.pageX + 10}px`;
+            });
+
+            element.addEventListener("mouseout", function () {
+                tooltip.classList.add("hidden");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,435 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-gap: 20px;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+
+}
+
+.sidebar {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height:90%;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu ul li {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav-menu ul li.active::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #76c7c0;
+    /* Color del círculo para la sección activa */
+}
+
+.nav-menu ul li:hover::before{
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #76c792;
+
+}
+
+.nav-menu img {
+    width: 30px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.nav-menu ul li.active img,
+.nav-menu ul li:hover img {
+    filter: none;
+    /* Quitar filtro de escala de grises en hover o activo */
+}
+
+.user-avatar img {
+    border-radius: 50%;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    padding: 10px 10px 20px 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease-in-out;
+    
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.carbon-footprint-section {
+    background-color: #C4E17F;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footprint-icon {
+    width: 80px;
+}
+
+.percentage-display span {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.avatar-section {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ai-tips {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+
+.circular-breakdown {
+    display: flex;
+    justify-content: space-around;
+}
+
+.circle-item {
+    text-align: center;
+}
+
+/* Gráficos circulares */
+.outer-circle {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    background: conic-gradient(var(--progress-color) calc(var(--progress) * 1%),
+            #ddd calc(var(--progress) * 1%));
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-circle {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-circle img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Estilos para cada categoría */
+.outer-circle.energy {
+    --progress-color: #76c7c0;
+    /* Color de energía */
+}
+
+.outer-circle.food {
+    --progress-color: #FFB74D;
+    /* Color de comida */
+}
+
+.outer-circle.walk {
+    --progress-color: #4CAF50;
+    /* Color de caminar */
+}
+
+.outer-circle.transport {
+    --progress-color: #42a5f5;
+    /* Color de transporte */
+}
+
+.progress-section {
+    grid-column: span 2;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.missions-section {
+    background-color: #F9F9F9;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.mission-list .mission-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.mission-progress .dots {
+    width: 100px;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo en la barra lateral */
+.logo {
+    margin-bottom: 20px;
+    /* Espacio debajo del logo */
+    text-align: center;
+    /* Centra el logo */
+}
+
+.logo img {
+    width: 50px;
+    /* Ajusta el tamaño del logo */
+    height: auto;
+    max-width: 100%;
+}
+
+/* Centrar el avatar */
+.avatar-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+}
+
+.avatar-section .avatar-stats {
+    text-align: center;
+}
+
+/* Ajustar el contenedor de la huella y la barra de progreso */
+.footprint-content {
+    display: flex;
+    justify-content: space-between;
+    /* Espacia los elementos */
+    align-items: center;
+    padding: 10px 20px;
+    /* Ajuste de padding para que tengan más separación */
+}
+
+/* Contenedor para la huella */
+.footprint-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Barra de Progreso */
+.linear-progress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    /* Alinea la barra hacia la izquierda */
+    margin-left: 20px;
+    /* Ajuste de margen para separarla de la huella */
+    width: 100%;
+    /* Aumenta el tamaño del contenedor de la barra de progreso */
+}
+
+.percentage-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilos de la barra de progreso de huella de carbono */
+.progress-bar {
+    display: flex;
+    width: 300px;
+    /* Puedes ajustar el ancho según sea necesario */
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    transition: width 0.4s ease;
+}
+
+.progress-fill.energy {
+    background-color: #76c7c0;
+    /* Color para energía */
+}
+
+.progress-fill.food {
+    background-color: #FFB74D;
+    /* Color para comida */
+}
+
+.progress-fill.walk {
+    background-color: #4CAF50;
+    /* Color para caminar */
+}
+
+.progress-fill.transport {
+    background-color: #42a5f5;
+    /* Color para transporte */
+}
+
+/* Contenedor para la huella y la barra */
+.footprint-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footprint-left {
+    flex: 1;
+}
+
+.linear-progress {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.percentage-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+
+#welcome-section p#current-date {
+    font-size: 16px;
+    /* Ajusta el tamaño de la fuente */
+    color: #666;
+    /* Un color más suave */
+    margin-top: 5px;
+    /* Separación con el título */
+}
+
+.date-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: flex-start;
+}
+
+.date-container .day {
+    font-size: 120px; /* Tamaño más grande para el día */
+    font-weight: bold;
+    line-height: 1;
+    margin-right: 20px; /* Espacio entre el día y el mes */
+}
+
+.date-container .month {
+    font-size: 50px; /* Tamaño más pequeño para el mes */
+    font-weight: normal;
+    text-transform: lowercase;
+    line-height: 1;
+}
+
+
+.mission-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 80%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    height: 20px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background-color: #4caf50;
+    /* Verde para indicar progreso */
+    height: 100%;
+    border-radius: 25px;
+    transition: width 0.4s ease;
+}
+
+.mission-item {
+    margin-bottom: 15px;
+}
+
+.mission-item span {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.mission-item #progreso-texto-semanales,
+.mission-item #progreso-texto-tiempo-limitado,
+.mission-item #progreso-texto-especiales {
+    font-weight: normal;
+}
+
+.color-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.points-total {
+    font-weight: bold;
+    margin-left: 10px;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misiones - CarbonTrackAI</title>
+    <link rel="stylesheet" href="/static/css/misiones.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="missions-container">
+        <h1 class="title">Tus Misiones</h1>
+        <div class="mission-sections">
+            <!-- Misiones Semanales -->
+            <section class="mission-section">
+                <div class="title-dot semanales"></div>
+                <h2 class="section-title">Misiones Semanales <span class="points" id="puntos-semanales">(0/15)</span></h2>
+                <ul class="mission-list">
+                    <!-- Categoría: Energía -->
+                    <li class="category-title">Energía</li>
+                    <li class="mission-item">
+                        <span>Apagar luces cuando no las uses</span>
+                        <input type="checkbox" class="mission-checkbox" data-points="5" data-id="1" />
+                    </li>
+                    <!-- Categoría: Transporte -->
+                    <li class="category-title">Transporte</li>
+                    <li class="mission-item">
+                        <span>Reducir el uso de transporte privado</span>
+                        <input type="checkbox" class="mission-checkbox" data-points="5" data-id="2" />
+                    </li>
+                    <li class="mission-item">
+                        <span>Usar bicicleta 3 veces a la semana</span>
+                        <input type="checkbox" class="mission-checkbox" data-points="5" data-id="3" />
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Misiones de Tiempo Limitado -->
+            <section class="mission-section">
+                <div class="title-dot tiempo-limitado"></div>
+                <h2 class="section-title">Misiones de Tiempo Limitado <span class="points" id="puntos-tiempo-limitado">(0/25)</span></h2>
+                <ul class="mission-list">
+                    <!-- Categoría: Energía -->
+                    <li class="category-title">Energía</li>
+                    <li class="mission-item">
+                        <span>Participar en la campaña "Energía limpia"</span>
+                        <input type="checkbox" class="mission-checkbox" data-points="25" data-id="4" />
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Misiones Especiales -->
+            <section class="mission-section">
+                <div class="title-dot especiales"></div>
+                <h2 class="section-title">Misiones Especiales <span class="points" id="puntos-especiales">(0/30)</span></h2>
+                <ul class="mission-list">
+                    <!-- Categoría: Walk -->
+                    <li class="category-title">Walk</li>
+                    <li class="mission-item">
+                        <span>Plantar 5 árboles en tu comunidad</span>
+                        <input type="checkbox" class="mission-checkbox" data-points="15" data-id="5" />
+                    </li>
+                    <!-- Categoría: Reciclaje -->
+                    <li class="category-title">Reciclaje</li>
+                    <li class="mission-item">
+                        <span>Organizar un evento de reciclaje</span>
+                        <input type="checkbox" class="mission-checkbox" data-points="15" data-id="6" />
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Botón para volver al dashboard -->
+        <button class="back-button" onclick="window.location.href='/dashboard'">Back to Dashboard</button>    
+    </div>
+
+    <script>
+        // Función para manejar los puntos y bloquear las misiones cuando se completan
+       // Actualizar la misión y enviar los datos al backend para actualizar
+function actualizarPuntos(checkbox, categoriaId, puntosMaximos) {
+    const puntosCategoria = document.getElementById(categoriaId);
+    let puntosActuales = parseInt(puntosCategoria.textContent.match(/\d+/)[0], 10) || 0;
+
+    const puntos = parseInt(checkbox.getAttribute('data-points'), 10);
+
+    if (checkbox.checked) {
+        puntosActuales += puntos;
+    } else {
+        puntosActuales -= puntos;
+    }
+
+    puntosCategoria.textContent = `(${puntosActuales}/${puntosMaximos})`;
+
+    // Si los puntos alcanzan el máximo, deshabilitar todas las misiones en esta sección
+    if (puntosActuales >= puntosMaximos) {
+        const checkboxes = checkbox.closest('.mission-section').querySelectorAll('.mission-checkbox');
+        checkboxes.forEach(cb => {
+            cb.disabled = true;
+        });
+    }
+
+    // Verifica si la ruta y el método son correctos
+    fetch('/update-mission', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ mission_id: checkbox.getAttribute('data-id'), completed: checkbox.checked })
+    }).then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            console.error('Error al actualizar la misión');
+        } else {
+            console.log('Misión actualizada correctamente');
+        }
+    }).catch(error => {
+        console.error('Error en la solicitud:', error);
+    });
+}
+
+    </script>
+
+</body>
+</html>

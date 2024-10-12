@@ -1,0 +1,270 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #3e3a5b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    /* Aumenta el ancho máximo */
+    margin: 50px auto;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 600px;
+    /* Aumenta la altura mínima */
+}
+
+/* Left Section - Image and logo */
+.left-section {
+    flex: 1;
+    background-image: url('/static/images/dun.jpg');
+    /* Asegúrate de que la imagen esté bien ubicada */
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    /* Aumenta el padding para más espacio */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.logo h2 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.left-section h1 {
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.slider {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+.dot.active {
+    background-color: white;
+    width: 12px;
+    /* Punto activo más grande */
+    height: 12px;
+}
+
+/* Right Section - Form */
+.right-section {
+    flex: 1;
+    background-color: #2a2a3c;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+
+}
+
+.right-section h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.right-section p {
+    margin-bottom: 20px;
+    color: #c2c2c2;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 15px;
+    margin-bottom: 25px;
+    /* Aumenta el espaciado entre los campos */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3b3b53;
+    color: white;
+    width: 100%;
+    outline: none;
+}
+
+input:focus {
+    border: 2px solid #6a57f0;
+    /* Efecto de iluminación en foco */
+    transition: border-color 0.3s ease;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+/* Terms and conditions */
+.terms {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.terms label a {
+    color: #6a57f0;
+    text-decoration: none;
+}
+
+/* Submit button */
+button[type="submit"] {
+    background-color: #6A57F0;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 30px;
+    /* Aumenta el margen superior */
+}
+
+button[type="submit"]:hover {
+    background-color: #5748D1;
+}
+
+/* Divider for social login */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    color: #c2c2c2;
+}
+
+.divider span {
+    flex: 1;
+    height: 1px;
+    background-color: #4a4a6a;
+}
+
+.divider p {
+    margin: 0 10px;
+}
+
+/* Social login buttons */
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+    /* Asegura que los botones ocupen todo el espacio disponible */
+}
+
+button.google,
+button.apple {
+    background-color: #FFFFFF;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex: 1;
+    margin-right: 15px;
+    /* Da más espacio entre los botones */
+}
+
+button.apple {
+    margin-right: 0;
+    /* Quita el margen derecho en el último botón */
+}
+
+button.google img,
+button.apple img {
+    margin-right: 10px;
+    width: 20px;
+    /* Asegura que los iconos sean más grandes */
+}
+
+button.google:hover,
+button.apple:hover {
+    background-color: #f1f1f1;
+}
+
+/* Link */
+a {
+    color: #6a57f0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilos para el enlace de contraseña olvidada */
+.forgot-password {
+    text-align: right;
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: #6a57f0;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}

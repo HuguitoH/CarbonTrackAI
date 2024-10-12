@@ -1,0 +1,120 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s ease;
+    /* Transición suave entre colores */
+}
+
+.container {
+    text-align: center;
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.title {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los personajes en la selección */
+.carousel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.avatar-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+}
+
+#avatar-info {
+    margin-top: 15px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones de navegación */
+.nav-button {
+    background-color: #009688;
+    border: none;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    padding: 0;
+    width: 60px;
+    /* Ancho fijo */
+    height: 60px;
+    /* Altura fija igual que el ancho */
+    border-radius: 50%;
+    /* Hace que el botón sea perfectamente redondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #00796b;
+}
+
+/* Botón de selección */
+.select-button {
+    padding: 15px 30px;
+    background-color: #f57c00;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.select-button:hover {
+    background-color: #e64a19;
+}
+
+/* Ocultar la descripción inicialmente */
+.hidden {
+    display: none;
+}
+
+/* Botón de mostrar información */
+.info-button {
+    background-color: #eeeeee;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    color: #333;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.info-button:hover {
+    background-color: #ddd;
+}
+

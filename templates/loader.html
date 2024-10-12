@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando...</title>
+    <link rel="stylesheet" href="/static/css/style-loader.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+</head>
+<body>
+    <div class="loader-container">
+        <h1>Guardando tu avatar...</h1>
+
+        <!-- Donde se mostrará la animación del avatar seleccionado -->
+        <div id="avatar-display" style="width: 150px; height: 150px; margin: auto;"></div>
+
+        <p id="avatar-name-text"></p>
+
+        <!-- Barra de progreso -->
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Obtener el avatar y el color de la URL
+        const selectedAvatar = getQueryParam('avatar');
+        const selectedColor = getQueryParam('color');
+
+        // Definir rutas exactas para cada avatar
+        const avatarAnimations = {
+            "Polar Bear": "/static/animations/polar_bear.json",
+            "Panda": "/static/animations/panda.json",
+            "Tiger": "/static/animations/tiger.json"
+        };
+
+        // Obtener la ruta de la animación correcta según el avatar seleccionado
+        const avatarAnimation = avatarAnimations[selectedAvatar];
+
+        // Mostrar el nombre del avatar
+        document.getElementById('avatar-name-text').textContent = selectedAvatar;
+
+        // Cargar la animación Lottie
+        lottie.loadAnimation({
+            container: document.getElementById('avatar-display'), // Donde se muestra la animación
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: avatarAnimation // Ruta del archivo JSON de animación
+        });
+
+        // Cambiar el fondo de la página según el color seleccionado
+        document.body.style.backgroundColor = selectedColor;
+
+        // Simulación de una barra de progreso
+        let progressBar = document.querySelector('.progress');
+        let width = 0;
+
+        let interval = setInterval(function() {
+            if (width >= 100) {
+                clearInterval(interval);
+                // Simula el fin de la carga y redirige al dashboard
+                window.location.href = '/encuesta';
+            } else {
+                width++;
+                progressBar.style.width = width + '%';
+            }
+        }, 50);
+    </script>
+</body>
+</html>

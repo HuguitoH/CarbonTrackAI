@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarbonTrackAI Dashboard</title>
+    <link rel="stylesheet" href="./static/css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="./static/icons/logo.svg" alt="Logo">
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li class="active"><a href="#"><img src="./static/icons/home.svg" alt="Home"></a></li>
+                    <li><a href="#"><img src="./static/icons/stats.svg" alt="Stats"></a></li>
+                    <li><a href="{{ url_for('misiones') }}"><img src="./static/icons/calendar.svg" alt="Misiones"></a></li>
+                    <li><a href="#"><img src="./static/icons/profile.svg" alt="Profile"></a></li>
+                </ul>
+            </div>
+            <div class="user-avatar">
+                <img src="./static/icons/settings.svg" alt="settings">
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section card">
+                <h1>Welcome, {{ usuario.nombre }}!</h1>
+                <div class="date-container">
+                    <span class="day" id="day"></span>
+                    <span class="month" id="month"></span>
+                </div>
+            </section>
+
+            <!-- Carbon Footprint Section -->
+            <section class="carbon-footprint-section card">         
+                <div class="footprint-content">
+        <!-- Huella SVG a la izquierda -->
+                    <div class="footprint-left">
+                        <img src="./static/icons/fingerprint.svg" alt="Carbon Footprint" class="footprint-icon">
+                    </div>
+        <!-- Barra de Progreso con colores dinámicos -->
+                    <div class="linear-progress">
+                        <span class="percentage-display">Carbon Footprint</span>
+                        <div class="progress-bar">
+                            <!-- Parte de energía -->
+                            <div class="progress-fill energy" style="width: {{ huella_datos.energy }}%;"></div>
+                            <!-- Parte de comida -->
+                            <div class="progress-fill food" style="width: {{ huella_datos.food }}%;"></div>
+                            <!-- Parte de caminar -->
+                            <div class="progress-fill walk" style="width: {{ huella_datos.walk }}%;"></div>
+                <!-- Parte de transporte -->
+                            <div class="progress-fill transport" style="width: {{ huella_datos.transport }}%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>          
+            <!-- Avatar Section -->
+            <section class="avatar-section card">
+                <h3>Your Avatar</h3>
+                <!-- Contenedor para la animación del avatar -->
+                <div id="avatar-animation" class="avatar-animation" style="width: 150px; height: 150px; margin: 0 auto;"></div>
+                <div class="avatar-stats" style="text-align: center;">
+                    <span id="avatar-level">{{ usuario.nivel }}</span>
+
+                </div>
+            </section>
+
+            <!-- AI Tips Section -->
+            <section class="ai-tips card">
+                <h3>AI Tips💡</h3>
+                <div class="tip-text">
+                    Consider using public transport or walking instead of driving.
+                </div>
+            </section>
+            <!-- Circular Breakdown Section -->
+            <section class="breakdown-section card">
+                <div class="circular-breakdown">
+                    <div class="circle-item">
+                        <span>Energy</span>
+                        <div class="outer-circle energy" style="--progress: {{ huella_datos.energy }};">
+                            <div class="inner-circle">
+                                <img src="./static/icons/energy.svg" alt="Energy Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-item">
+                        <span>Food</span>
+                        <div class="outer-circle food" style="--progress: {{ huella_datos.food }};">
+                            <div class="inner-circle">
+                                <img src="./static/icons/food.svg" alt="Food Icon">
+                            </div>
+                        </div>
+                    </div>
+                            <div class="circle-item">
+                        <span>Walk</span>
+                        <div class="outer-circle walk" style="--progress: {{ huella_datos.walk }};">
+                            <div class="inner-circle">
+                                <img src="./static/icons/walk.svg" alt="Walk Icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-item">
+                        <span>Transport</span>
+                        <div class="outer-circle transport" style="--progress: {{ huella_datos.transport }};">
+                            <div class="inner-circle">
+                                <img src="./static/icons/car.svg" alt="Transport Icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Progress Chart Section -->
+            <section class="progress-section card">
+                <h3>Progress</h3>
+                <div class="progress-chart">
+                    <!-- Chart implementation here -->
+                </div>
+            </section>
+
+            <section class="missions-section card">
+    <h3>Missions Progress</h3>
+
+    <!-- Weekly Missions -->
+    <div class="mission-item">
+        <!-- Punto de color -->
+        <div class="color-dot" style="background-color: purple;"></div>
+        <span>Weekly Missions</span>
+        <!-- Mostrar el total de puntos -->
+        <span class="points-total" id="puntos-semanales-text">0/15</span>
+    </div>
+
+    <!-- Limited-Time Missions -->
+    <div class="mission-item">
+        <!-- Punto de color -->
+        <div class="color-dot" style="background-color: blue;"></div>
+        <span>Limited-Time Missions</span>
+        <!-- Mostrar el total de puntos -->
+        <span class="points-total" id="puntos-tiempo-limitado-text">0/25</span>
+    </div>
+
+    <!-- Special Missions -->
+    <div class="mission-item">
+        <!-- Punto de color -->
+        <div class="color-dot" style="background-color: orange;"></div>
+        <span>Special Missions</span>
+        <!-- Mostrar el total de puntos -->
+        <span class="points-total" id="puntos-especiales-text">0/30</span>
+    </div>
+</section>
+
+
+
+
+        </main>
+    </div>
+
+    <!-- Script para cargar la animación del avatar -->
+    <script>
+    // Definir las rutas exactas de los archivos JSON de animación para cada avatar
+        const avatarAnimations = {
+            "Polar Bear": "/static/animations/polar_bear.json",
+            "Panda": "/static/animations/panda.json",
+            "Tiger": "/static/animations/tiger.json"
+        };
+
+        // Obtener el nombre del avatar desde el backend (el que se pasó en la variable 'avatar')
+        const selectedAvatar = "{{ avatar }}";
+
+    // Verificar si el avatar seleccionado tiene una animación definida
+        const avatarJsonPath = avatarAnimations[selectedAvatar];
+
+        if (avatarJsonPath) {
+        // Cargar la animación del avatar seleccionado usando Lottie
+            lottie.loadAnimation({
+                container: document.getElementById('avatar-animation'), // Donde se muestra la animación
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: avatarJsonPath // Ruta del archivo JSON de animación
+            });
+        } else {
+            console.error("Animación no encontrada para el avatar:", selectedAvatar);
+            }
+    </script>
+    <script>
+    // Función para obtener el día y el mes
+    function setDate() {
+        const today = new Date();
+        const options = { month: 'short' }; // Formato corto para el mes
+        const day = today.getDate();
+        const month = new Intl.DateTimeFormat('es-ES', options).format(today);
+
+        document.getElementById('day').textContent = day;
+        document.getElementById('month').textContent = month;
+    }
+
+    // Ejecutar la función cuando se cargue la página
+    setDate();
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Hacer la solicitud al backend para obtener el progreso de las misiones
+    fetch('/progreso-misiones')
+    .then(response => response.json())
+    .then(data => {
+        if (data) {
+            // Actualizar los puntos de misiones semanales
+            document.getElementById('puntos-semanales-text').textContent = `${Math.round(data.semanales)}/15`;
+
+            // Actualizar los puntos de misiones de tiempo limitado
+            document.getElementById('puntos-tiempo-limitado-text').textContent = `${Math.round(data.tiempo_limitado)}/25`;
+
+            // Actualizar los puntos de misiones especiales
+            document.getElementById('puntos-especiales-text').textContent = `${Math.round(data.especiales)}/30`;
+        }
+    });
+});
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona tu Avatar - CarbonTrackAI</title>
+    <link rel="stylesheet" href="/static/css/styles-avatar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Elige tu Compañero</h1>
+
+        <div class="carousel">
+            <button id="prev-avatar" class="nav-button">&#10094;</button>
+
+            <div class="avatar-display">
+                <div id="avatar-animation" class="avatar" style="width: 250px; height: 250px;"></div>
+                <div class="avatar-info">
+                    <h2 id="avatar-name">Polar Bear</h2>
+                    <button id="show-info" class="info-button">Ver más</button>
+                    <p id="avatar-description" class="hidden">El oso polar depende del hielo marino...</p>
+                </div>
+            </div>
+
+            <button id="next-avatar" class="nav-button">&#10095;</button>
+        </div>
+
+        <button id="confirm-avatar" class="select-button">Seleccionar</button>
+    </div>
+
+    <script>
+    // Inicializa el índice de avatar
+    let currentAvatarIndex = 0;
+
+    // Define los personajes y sus atributos
+    const avatars = [
+        {
+            name: 'Polar Bear',
+            animation: './static/animations/polar_bear.json',  // Sin espacios en el nombre
+            description: 'El oso polar depende del hielo marino para cazar. Con el deshielo de los polos, su hábitat está en peligro.',
+            backgroundColor: '#A3D5FF'  // Azul bonito para el oso polar
+        },
+        {
+            name: 'Panda',
+            animation: './static/animations/panda.json',
+            description: 'El panda habita en los bosques de bambú. La deforestación amenaza su alimentación y su hogar.',
+            backgroundColor: '#A8E6CF'  // Verde bonito para el panda
+        },
+        {
+            name: 'Tiger',
+            animation: './static/animations/tiger.json',
+            description: 'El tigre está en peligro debido a la pérdida de su hábitat en las selvas tropicales.',
+            backgroundColor: '#FFCC80'  // Naranja suave para el tigre
+        }
+    ];
+
+    // Cargar el avatar y actualizar los elementos de la página
+    function loadAvatar(index) {
+        const avatar = avatars[index];
+        document.getElementById('avatar-name').textContent = avatar.name;
+        document.getElementById('avatar-description').textContent = avatar.description;
+
+        // Cambiar el color de fondo según el personaje
+        document.body.style.backgroundColor = avatar.backgroundColor;
+
+        // Cargar la animación Lottie
+        const animationContainer = document.getElementById('avatar-animation');
+        animationContainer.innerHTML = ''; 
+        lottie.loadAnimation({
+            container: animationContainer,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: avatar.animation
+        });
+    }
+
+    // Evento para avanzar al siguiente avatar
+    document.getElementById('next-avatar').addEventListener('click', function() {
+        currentAvatarIndex = (currentAvatarIndex + 1) % avatars.length;
+        loadAvatar(currentAvatarIndex);
+    });
+
+    // Evento para retroceder al avatar anterior
+    document.getElementById('prev-avatar').addEventListener('click', function() {
+        currentAvatarIndex = (currentAvatarIndex - 1 + avatars.length) % avatars.length;
+        loadAvatar(currentAvatarIndex);
+    });
+
+    // Evento para mostrar/ocultar la descripción del avatar
+    document.getElementById('show-info').addEventListener('click', function() {
+        const description = document.getElementById('avatar-description');
+        description.classList.toggle('hidden');
+    });
+
+    // Cargar el primer avatar al cargar la página
+    loadAvatar(currentAvatarIndex);
+
+    // Evento para confirmar la selección del avatar
+    document.getElementById('confirm-avatar').addEventListener('click', function() {
+        const selectedAvatar = avatars[currentAvatarIndex].name;
+        const selectedColor = avatars[currentAvatarIndex].backgroundColor;  // Obtener el color del avatar seleccionado
+        const avatarImage = avatars[currentAvatarIndex].animation;  // Ruta de la animación
+
+        console.log('Avatar seleccionado:', selectedAvatar);
+
+        // Enviar el avatar seleccionado al backend y esperar confirmación
+        fetch('/guardar-avatar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ avatar: selectedAvatar })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Solo redirigir al loader cuando el avatar se haya guardado correctamente en el backend
+                window.location.href = `/loader?avatar=${selectedAvatar}&color=${encodeURIComponent(selectedColor)}&image=${encodeURIComponent(avatarImage)}`;
+            } else {
+                alert('Error al guardar el avatar');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+</script>
+
+</body>
+</html>

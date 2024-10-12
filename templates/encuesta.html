@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Huella de Carbono</title>
+    <link rel="stylesheet" href="/static/css/encuesta.css"> <!-- Estilos mejorados -->
+</head>
+<body>
+    <div class="survey-container">
+        <h1>Calcula tu Huella de Carbono</h1>
+        <form id="carbon-footprint-survey" method="POST" action="{{ url_for('guardar_huella') }}">
+            <div class="section">
+                <h3>Consumo de Energía</h3>
+                <label for="energy_usage">¿Cuántas horas al día usas aparatos eléctricos?</label>
+                <select id="energy_usage" name="energy_usage">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="1">Menos de 1 hora</option>
+                    <option value="2">1 a 3 horas</option>
+                    <option value="3">3 a 5 horas</option>
+                    <option value="4">Más de 5 horas</option>
+                </select>
+            </div>
+
+            <div class="section">
+                <h3>Alimentación</h3>
+                <label for="meat_consumption">¿Con qué frecuencia consumes carne?</label>
+                <select id="meat_consumption" name="meat_consumption">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="1">Nunca</option>
+                    <option value="2">1 o 2 veces a la semana</option>
+                    <option value="3">3 a 5 veces a la semana</option>
+                    <option value="4">Diario</option>
+                </select>
+            </div>
+
+            <div class="section">
+                <h3>Transporte a Pie o Bicicleta</h3>
+                <label for="walk_frequency">¿Cuántas veces a la semana caminas o usas bicicleta?</label>
+                <select id="walk_frequency" name="walk_frequency">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="1">Nunca</option>
+                    <option value="2">1 o 2 veces a la semana</option>
+                    <option value="3">3 a 5 veces a la semana</option>
+                    <option value="4">Diario</option>
+                </select>
+            </div>
+
+            <div class="section">
+                <h3>Uso de Transporte</h3>
+                <label for="car_usage">¿Cuántas veces a la semana utilizas tu coche?</label>
+                <select id="car_usage" name="car_usage">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="1">Nunca</option>
+                    <option value="2">1 o 2 veces a la semana</option>
+                    <option value="3">3 a 5 veces a la semana</option>
+                    <option value="4">Diario</option>
+                </select>
+            </div>
+
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <!-- Script para validar el formulario -->
+    <script>
+        document.getElementById('carbon-footprint-survey').addEventListener('submit', function(event) {
+            const energyUsage = document.getElementById('energy_usage').value;
+            const meatConsumption = document.getElementById('meat_consumption').value;
+            const walkFrequency = document.getElementById('walk_frequency').value;
+            const carUsage = document.getElementById('car_usage').value;
+
+            if (!energyUsage || !meatConsumption || !walkFrequency || !carUsage) {
+                alert("Por favor, completa todas las secciones de la encuesta.");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
